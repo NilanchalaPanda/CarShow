@@ -2,7 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import "reflect-metadata";
 import { AppDataSource } from "./database/config";
-import { Router as userRouetr } from "./routers/user.routes";
+import { Router as userRouter } from "./routers/user.routes";
 import { Router as carRouter } from "./routers/car.routes";
 
 dotenv.config();
@@ -10,7 +10,7 @@ const app = express();
 const port = process.env.PORT || 3000;
 
 app.use(express.json());
-app.use("/api/v1", userRouetr);
+app.use("/api/v1", userRouter);
 app.use("/api/v1", carRouter);
 AppDataSource.initialize()
   .then(() => {

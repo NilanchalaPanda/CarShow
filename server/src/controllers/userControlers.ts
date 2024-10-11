@@ -57,6 +57,7 @@ export class userControllers {
   static async findByEmail(req: Request, res: Response) {
     try {
       const userService = new UserCore(new UserAdapdter());
+      console.log("Email - ", req.params.email);
       const user = await userService.findByEmail(req.params.email);
       res.status(200).json(user);
     } catch (error) {

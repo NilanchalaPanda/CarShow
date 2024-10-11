@@ -2,7 +2,6 @@ import { AppDataSource } from "../database/config";
 import { Car } from "../entity/cars.entity";
 import { User } from "../entity/user.entity";
 import { CarRepositoryInterface } from "../interfaces/car.interface";
-import { UserInterface } from "../interfaces/user.interface";
 
 export class CarAdapter implements CarRepositoryInterface {
   async findAll() {

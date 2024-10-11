@@ -2,7 +2,6 @@ import {
   CarInterface,
   CarRepositoryInterface,
 } from "../interfaces/car.interface";
-import { UserInterface } from "../interfaces/user.interface";
 
 export class CarCore {
   constructor(private carRepository: CarRepositoryInterface) {}
