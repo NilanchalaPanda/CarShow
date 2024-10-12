@@ -1,54 +1,62 @@
-"use client"
-import Link from 'next/link';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import toast from 'react-hot-toast';
+"use client";
+import Link from "next/link";
+import React from "react";
+import { useForm } from "react-hook-form";
+import toast from "react-hot-toast";
 
 function page() {
   const { register, handleSubmit } = useForm();
 
   const onSubmit = async (data) => {
-    console.log(data)
+    console.log(data);
     try {
-      const response = await fetch('http://localhost:3000/api/v1/login', {
-        method: 'POST',
+      const response = await fetch("http://localhost:8000/api/v1/login", {
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify(data),
       });
 
       const result = await response.json();
+      toast.success("Logged In");
       console.log(result);
     } catch (error) {
-      console.error('Error:', error);
+      toast.error("Something went wrong");
+      console.error("Error:", error);
     }
   };
 
   return (
     <div className="mx-auto max-w-screen-xl px-4 py-16 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-lg">
-        <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">Revued</h1>
+        <h1 className="text-center text-2xl font-bold text-green-600 sm:text-3xl">
+          Revued
+        </h1>
 
         <p className="mx-auto mt-4 max-w-md text-center text-gray-500">
           Get started today!
         </p>
 
-        <form 
-          onSubmit={handleSubmit(onSubmit)} 
+        <form
+          onSubmit={handleSubmit(onSubmit)}
           className="mb-0 mt-6 space-y-4 rounded-lg p-4 shadow-lg sm:p-6 lg:p-8"
         >
-          <p className="text-center text-lg font-medium">Sign in to your account</p>
+          <p className="text-center text-lg font-medium">
+            Sign in to your account
+          </p>
 
           {/* Email Field */}
           <div>
-            <label htmlFor="email" className="sr-only">Email</label>
+            <label htmlFor="email" className="sr-only">
+              Email
+            </label>
             <div className="relative">
               <input
                 type="email"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter email"
-                {...register('email')}
+                {...register("email")}
               />
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -71,13 +79,15 @@ function page() {
 
           {/* Password Field */}
           <div>
-            <label htmlFor="password" className="sr-only">Password</label>
+            <label htmlFor="password" className="sr-only">
+              Password
+            </label>
             <div className="relative">
               <input
                 type="password"
                 className="w-full rounded-lg border-gray-200 p-4 pe-12 text-sm shadow-sm"
                 placeholder="Enter password"
-                {...register('password')}
+                {...register("password")}
               />
               <span className="absolute inset-y-0 end-0 grid place-content-center px-4">
                 <svg
@@ -115,7 +125,9 @@ function page() {
           {/* Redirect to Sign Up */}
           <p className="text-center text-sm text-gray-500">
             No account?
-            <Link className="underline" href="/sign-up">Sign up</Link>
+            <Link className="underline" href="/sign-up">
+              Sign up
+            </Link>
           </p>
         </form>
       </div>
